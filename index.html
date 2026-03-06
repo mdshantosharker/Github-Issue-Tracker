@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,6 +26,58 @@
     }
   </style>
   <body>
+    <section class="bg-[#F8FAFC] p-5 lg:p-20">
+      <div
+        class="p-5 lg:p-20 bg-white shadow-2xl max-w-screen-sm mx-auto rounded-sm"
+      >
+        <div class="flex-col mt-5">
+          <div class="text-center mb-5">
+            <div class="flex justify-center mb-4">
+              <img src="/assets/github-logo.png" alt="" />
+            </div>
+            <h2 class="font-semibold text-2xl">GitHub Issues Tracker</h2>
+            <p class="text-[16px] text-[#64748B]">
+              Sign in to manage your issues
+            </p>
+          </div>
+
+          <div class="w-full">
+            <fieldset class="fieldset">
+              <label class="text-[16px]">Username</label>
+              <input
+                type="email"
+                class="input w-full"
+                placeholder="Enter Username"
+              />
+              <h2 class="text-[#4A00FF] text-[12px]">Default: admin</h2>
+
+              <label class="text-[16px]">Password</label>
+              <input
+                type="email"
+                class="input w-full"
+                placeholder="Enter Password"
+              />
+              <h2 class="text-[#4A00FF] text-[12px]">Default: admin123</h2>
+
+              <button class="btn btn-primary mt-4">Sign In</button>
+              <div class="divider">OR</div>
+
+              <div class="text-center">
+                <h2 class="text-[#64748B] text-[12px]">Demo Credentials:</h2>
+                <div class="bg-[#eef3f7] p-4 mt-2 rounded-sm">
+                  <h2 class="font-bold">
+                    Username: <span class="font-light"> admin </span>
+                  </h2>
+                  <h2 class="font-bold">
+                    Password: <span class="font-light"> admin123 </span>
+                  </h2>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </section>
     <script src="script/index.js"></script>
   </body>
 </html>
