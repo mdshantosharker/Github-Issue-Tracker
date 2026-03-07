@@ -76,9 +76,13 @@
         class="md:w-10/12 mx-auto pt-5 shadow-lg p-5 bg-white rounded-sm"
       >
         <div>
-          <button class="btn btn-primary">All</button>
-          <button class="btn">Open</button>
-          <button class="btn">Closed</button>
+          <button id="all" onclick="btnAll('all')" class="btn btn-primary">
+            All
+          </button>
+          <button id="open" onclick="btnAll('open')" class="btn">Open</button>
+          <button id="closed" onclick="btnAll('closed')" class="btn">
+            Closed
+          </button>
         </div>
       </section>
 
