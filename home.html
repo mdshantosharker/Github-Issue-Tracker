@@ -34,7 +34,7 @@
     }
   </style>
   <body>
-    <header class="shadow-sm">
+    <header class="shadow-sm card">
       <div class="lg:w-10/12 w-11/12 mx-auto mt-5 pb-5 lg:flex justify-between">
         <div class="flex items-center justify-center gap-2">
           <div>
@@ -73,26 +73,38 @@
 
     <main class="bg-[#F8FAFC] lg:p-10 p-4">
       <section
-        class="md:w-10/12 mx-auto pt-5 shadow-lg p-5 bg-white rounded-sm"
+        class="md:w-10/12 mx-auto pt-5 shadow-md p-5 bg-white rounded-sm"
       >
-        <div>
-          <button id="all" onclick="btnAll('all')" class="btn btn-primary">
+        <div class="md:space-x-2">
+          <button
+            id="all"
+            onclick="btnAll('all')"
+            class="btn btn-primary md:px-10 px-8"
+          >
             All
           </button>
-          <button id="open" onclick="btnAll('open')" class="btn">Open</button>
-          <button id="closed" onclick="btnAll('closed')" class="btn">
+          <button id="open" onclick="btnAll('open')" class="btn md:px-10 px-8">
+            Open
+          </button>
+          <button
+            id="closed"
+            onclick="btnAll('closed')"
+            class="btn md:px-10 px-8"
+          >
             Closed
           </button>
         </div>
       </section>
 
       <section
-        class="md:w-10/12 mx-auto pt-5 shadow-lg p-5 bg-white rounded-sm mt-5 flex justify-between items-center border-b-2 border-gray-400"
+        class="md:w-10/12 mx-auto pt-5 shadow-lg p-5 bg-white rounded-sm mt-5 flex justify-between items-center border-b-2 border-gray-200"
       >
         <div class="flex items-center gap-2">
           <img src="/assets/Aperture.png" alt="" />
           <div>
-            <h1  class="text-xl font-semibold"><span id="numberIssus">50</span> Issues</h1>
+            <h1 class="text-xl font-semibold">
+              <span id="numberIssus">50</span> Issues
+            </h1>
 
             <p class="text-[#64748B]">Track and manage your project issues</p>
           </div>
@@ -113,7 +125,7 @@
       <!-- card-1 -->
       <section
         id="card-container"
-        class="md:w-10/12 mx-auto pt-5 shadow-lg p-5 rounded-sm justify-between items-center grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-3"
+        class="md:w-10/12 mx-auto grid grid-cols-1 shadow-lg p-5 bg-white rounded-sm sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
       >
         <!-- <div class="card bg-base-100 shadow-sm border-t-3 border-green-400">
           <div class="p-4">

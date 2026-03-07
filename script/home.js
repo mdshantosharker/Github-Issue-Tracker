@@ -29,7 +29,7 @@ const allIssuesDisplay = (issues, id) => {
     if (id === "all" || issue.status == id) {
       const card = document.createElement("div");
       card.innerHTML = `
-        <div class="card bg-base-100 shadow-sm border-t-4 ${issue.status === "open" ? " border-green-400" : " border-purple-400"} ">
+        <div class="card bg-base-100 flex flex-col h-full shadow-sm  border-t-4 ${issue.status === "open" ? " border-green-400" : " border-purple-400"} ">
               <div class="p-4">
                 <div class="flex justify-between items-center pb-2">
                   <img  src= "${issue.status === "open" ? "/assets/Open-Status.png" : "/assets/Closed- Status .png"}" alt="" />
@@ -42,26 +42,26 @@ const allIssuesDisplay = (issues, id) => {
 
 
                 </div>
-                <h1 class="font-semibold text-xl  pb-2">
+                <h1 class="font-semibold text-xl  pb-2 title">
                   ${issue.title}
                 </h1>
-                <p class="text-[#64748B]  pb-2">
+                <p class="text-[#64748B]  pb-5 description text-sm">
                   ${issue.description}
                 </p>
     
-                <div class="flex justify-between items-center  pb-2">
+                <div class="flex  items-center gap-5 pb-2">
                   <div
                     class="bg-red-200 rounded-2xl px-2 py-1  flex items-center gap-2 text-red-500"
                   >
                     <i class="fa-solid fa-bug "></i>
-                    <h1 class="text-[10px]">BUG</h1>
+                    <h1 class="text-[12px]">BUG</h1>
                   </div>
                   <div
                     class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 text-[#f18408]"
                   >
                    <div class="flex items-center gap-1">
                      <i class="fa-solid fa-life-ring"></i>
-                    <h1 class="text-[10px]">HELP WANTED</h1>
+                    <h1 class="text-[12px]">HELP WANTED</h1>
                    </div>
                   </div>
                 </div>
