@@ -6,21 +6,41 @@ const allIssues = (id) => {
 
 allIssues("all");
 
+let allBtnArray = 0;
+let openBtnArray = 0;
+let closedBtnArray = 0;
+
 const allIssuesDisplay = (issues, id) => {
+  openBtnArray = 0;
+  closedBtnArray = 0;
+  allBtnArray = 0;
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   issues.forEach((issue) => {
+    if (issue.status == "open") {
+      openBtnArray++;
+    }
+    if (issue.status == "closed") {
+      closedBtnArray++;
+    }
+    if (issue.status == "open" || issue.status == "closed") {
+      allBtnArray++;
+    }
     if (id === "all" || issue.status == id) {
-     
       const card = document.createElement("div");
       card.innerHTML = `
-        <div class="card bg-base-100 shadow-sm border-t-3 border-green-400">
+        <div class="card bg-base-100 shadow-sm border-t-4 ${issue.status === "open" ? " border-green-400" : " border-purple-400"} ">
               <div class="p-4">
                 <div class="flex justify-between items-center pb-2">
-                  <img src="/assets/Open-Status.png" alt="" />
-                  <div class="bg-red-200 rounded-2xl px-6 py-1">
-                    <h1 class="text-red-500 text-[12px]">${issue.priority}</h1>
+                  <img  src= "${issue.status === "open" ? "/assets/Open-Status.png" : "/assets/Closed- Status .png"}" alt="" />
+
+                  <div class="${issue.priority.toUpperCase() === "HIGH" ? "bg-red-200" : issue.priority.toUpperCase() === "MEDIUM" ? "bg-yellow-200" : "bg-gray-200"} rounded-2xl px-6 py-1">
+
+                    <h1 class="text-[12px] ${issue.priority.toUpperCase() == "HIGH" ? "text-red-500" : issue.priority.toUpperCase() === "MEDIUM" ? "text-[#F59E0B]" : "text-gray-500"}">${issue.priority.toUpperCase()}</h1>
                   </div>
+
+
+
                 </div>
                 <h1 class="font-semibold text-xl  pb-2">
                   ${issue.title}
@@ -57,26 +77,32 @@ const allIssuesDisplay = (issues, id) => {
       cardContainer.append(card);
     }
   });
+  // console.log(openBtnArray);
 };
 
 const btnAll = (id) => {
   allIssues(id);
 };
 
+const numberIssus = document.getElementById("numberIssus");
+
 const allBtn = document.getElementById("all");
 allBtn.addEventListener("click", () => {
   removeBtnColor();
   allBtn.classList.add("btn-primary");
+  numberIssus.innerText = allBtnArray;
 });
 const openBtn = document.getElementById("open");
 openBtn.addEventListener("click", () => {
   removeBtnColor();
   openBtn.classList.add("btn-primary");
+  numberIssus.innerText = openBtnArray;
 });
 const closed = document.getElementById("closed");
 closed.addEventListener("click", () => {
   removeBtnColor();
   closed.classList.add("btn-primary");
+  numberIssus.innerText = closedBtnArray;
 });
 
 const removeBtnColor = () => {
