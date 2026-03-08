@@ -61,10 +61,10 @@
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input type="search" required placeholder="Search" />
+            <input id="inputSearch" type="search" required placeholder="Search" />
           </label>
 
-          <button class="btn btn-primary font-semibold text-[16px]">
+          <button id="searchBtn" class="btn btn-primary font-semibold text-[16px]">
             + New Issue
           </button>
         </div>
@@ -75,25 +75,25 @@
       <section
         class="md:w-10/12 mx-auto pt-5 shadow-md p-5 bg-white rounded-sm"
       >
-        <div class="md:space-x-2">
+        <div class="md:space-x-2 space-x-3">
           <button
             id="all"
             onclick="btnAll('all')"
-            class="btn btn-primary btn-issu md:px-10 px-8"
+            class="btn btn-primary btn-issu md:px-10 px-5"
           >
             All
           </button>
           <button
             id="open"
             onclick="btnAll('open')"
-            class="btn btn-issu md:px-10 px-8"
+            class="btn btn-issu md:px-10 px-5"
           >
             Open
           </button>
           <button
             id="closed"
             onclick="btnAll('closed')"
-            class="btn btn-issu md:px-10 px-8"
+            class="btn btn-issu md:px-10 px-5"
           >
             Closed
           </button>
@@ -126,7 +126,13 @@
         </div>
       </section>
 
-      <!-- card-1 -->
+    
+
+      <!-- spinner -->
+       <section id="spinner" class="text-center my-10 hidden">
+        <span class="loading loading-spinner loading-xl"></span>
+       </section>
+
       <section
         id="card-container"
         class="md:w-10/12 mx-auto grid grid-cols-1 shadow-lg p-5 bg-white rounded-sm sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5"
@@ -141,17 +147,13 @@
      <div id="details-container">
       
      </div>
-
-   
-
-
         <div class="modal-action">
           <form method="dialog">
             <!-- if there is a button in form, it will close the modal -->
-            <button class="btn">Close</button>
+            <button class="btn btn-primary">Close</button>
           </form>
         </div>
-      </div>
+      </section>
     </dialog>
 
     <script src="script/home.js"></script>

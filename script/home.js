@@ -1,4 +1,15 @@
+const manageLoader = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("card-container").classList.add("hidden");
+  } else {
+    document.getElementById("card-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
 const allIssues = (id) => {
+  manageLoader(true);
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues").then((res) =>
     res.json().then((data) => allIssuesDisplay(data.data, id)),
   );
@@ -30,18 +41,15 @@ const allIssuesDisplay = (issues, id) => {
       const card = document.createElement("div");
       card.innerHTML = `
       
-        <div onclick="modalBtn(${issue.id})" class="card bg-base-100 flex flex-col h-full shadow-sm  border-t-4 ${issue.status === "open" ? " border-green-400" : " border-purple-400"} ">
+        <div onclick="modalBtn('${issue.id}')" class="card bg-base-100 flex flex-col h-full shadow-sm  border-t-4 ${issue.status === "open" ? " border-green-400" : " border-purple-400"} ">
               <div class="p-4">
                 <div class="flex justify-between items-center pb-2">
-                  <img  src= "${issue.status === "open" ? "/assets/Open-Status.png" : "/assets/Closed- Status .png"}" alt="" />
+                  <img  src= "${issue.status === "open" ? "/assets/Open-Status.png" : "/assets/Closed-Status.png"}" alt="" />
 
                   <div class="${issue.priority.toUpperCase() === "HIGH" ? "bg-red-200" : issue.priority.toUpperCase() === "MEDIUM" ? "bg-yellow-200" : "bg-gray-200"} rounded-2xl px-6 py-1">
 
                     <h1 class="text-[12px] ${issue.priority.toUpperCase() == "HIGH" ? "text-red-500" : issue.priority.toUpperCase() === "MEDIUM" ? "text-[#F59E0B]" : "text-gray-500"}">${issue.priority.toUpperCase()}</h1>
                   </div>
-
-
-
                 </div>
                 <h1 class="font-semibold text-xl  pb-2 title line-clamp-1">
                   ${issue.title}
@@ -79,6 +87,7 @@ const allIssuesDisplay = (issues, id) => {
       cardContainer.append(card);
     }
   });
+  manageLoader(false);
   // console.log(openBtnArray);
 };
 
@@ -94,12 +103,14 @@ allBtn.addEventListener("click", () => {
   allBtn.classList.add("btn-primary");
   numberIssus.innerText = allBtnArray;
 });
+
 const openBtn = document.getElementById("open");
 openBtn.addEventListener("click", () => {
   removeBtnColor();
   openBtn.classList.add("btn-primary");
   numberIssus.innerText = openBtnArray;
 });
+
 const closed = document.getElementById("closed");
 closed.addEventListener("click", () => {
   removeBtnColor();
@@ -180,3 +191,20 @@ const modalDetailsDisplay = (word) => {
 
   document.getElementById("word_modal").showModal();
 };
+
+document.getElementById("searchBtn").addEventListener("click", () => {
+  const input = document.getElementById("inputSearch");
+  const searchValue = input.value.trim().toLowerCase();
+  console.log(searchValue);
+
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`).then((res) =>
+    res.json().then((data) => {
+      const allWord = data.data;
+      const filterWords = allWord.filter((word) =>
+        word.title.toLowerCase().includes(searchValue),
+      );
+      allIssuesDisplay(filterWords, "all");
+      numberIssus.innerText = filterWords.length;
+    }),
+  );
+});
