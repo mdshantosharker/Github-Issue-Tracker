@@ -57,39 +57,36 @@ const allIssuesDisplay = (issues, id) => {
                 <p class="text-[#64748B]  pb-5 description text-sm line-clamp-1">
                   ${issue.description}
                 </p>
-    
                 <div class="flex flex-wrap items-center gap-2 pb-2 pt-5">
+                <div class="${
+                  issue.labels[0] === "enhancement"
+                    ? "bg-green-400 text-white"
+                    : "bg-red-200 text-red-500"
+                } rounded-2xl px-2 py-1 flex items-center gap-2">
 
-  <div class="${
-    issue.labels[0] === "enhancement"
-      ? "bg-green-400 text-white"
-      : "bg-red-200 text-red-500"
-  } rounded-2xl px-2 py-1 flex items-center gap-2">
+                <i class="${
+                  issue.labels[0] === "enhancement"
+                    ? "fa-solid fa-wand-magic-sparkles"
+                    : "fa-solid fa-bug"
+                }"></i>
 
-    <i class="${
-      issue.labels[0] === "enhancement"
-        ? "fa-solid fa-wand-magic-sparkles"
-        : "fa-solid fa-bug"
-    }"></i>
+                <h1 class="text-[12px]">
+                  ${issue.labels[0] === undefined ? "No Bug" : issue.labels[0]}
+                </h1>
 
-    <h1 class="text-[12px]">
-      ${issue.labels[0] === undefined ? "No Bug" : issue.labels[0]}
-    </h1>
+               </div>
 
-  </div>
+          <div class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 
+          text-[#f18408] ${issue.labels[1] === undefined ? "hidden" : ""}">
 
-  <div class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 text-[#f18408] ${
-    issue.labels[1] === undefined ? "hidden" : ""
-  }">
+              <i class="fa-solid fa-life-ring"></i>
+          <h1 class="text-[12px]">
+          ${issue.labels[1] === undefined ? "" : issue.labels[1]}
+          </h1>
 
-    <i class="fa-solid fa-life-ring"></i>
-    <h1 class="text-[12px]">
-      ${issue.labels[1] === undefined ? "" : issue.labels[1]}
-    </h1>
+            </div>
 
-  </div>
-
-</div>
+            </div>
                 <hr class="border border-gray-300 mt-3 " />
     
                 <div class="pt-2">
@@ -171,24 +168,38 @@ const modalDetailsDisplay = (word) => {
     </div>
 
     <div class="flex flex-wrap items-center gap-2 pb-2 pt-5">
+                <div class="${
+                  word.labels[0] === "enhancement"
+                    ? "bg-green-400 text-white"
+                    : "bg-red-200 text-red-500"
+                } rounded-2xl px-2 py-1 flex items-center gap-2">
 
-      <div class="bg-red-200 rounded-2xl px-2 py-1 flex items-center gap-2 text-red-500">
-        <i class="fa-solid fa-bug"></i>
-        <h1 class="text-[12px]">${word.labels?.[0] ?? "No"} BUG</h1>
-      </div>
+                <i class="${
+                  word.labels[0] === "enhancement"
+                    ? "fa-solid fa-wand-magic-sparkles"
+                    : "fa-solid fa-bug"
+                }"></i>
 
-      <div class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 text-[#f18408]">
-        <i class="fa-solid fa-life-ring"></i>
-        <h1 class="text-[12px]">${word.labels?.[1] ?? "No Help Need"}</h1>
-      </div>
+                <h1 class="text-[12px]">
+                  ${word.labels[0] === undefined ? "No Bug" : word.labels[0]}
+                </h1>
 
-    </div>
+               </div>
+
+          <div class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 
+          text-[#f18408] ${word.labels[1] === undefined ? "hidden" : ""}">
+
+              <i class="fa-solid fa-life-ring"></i>
+          <h1 class="text-[12px]">
+          ${word.labels[1] === undefined ? "" : word.labels[1]}
+          </h1>
+            </div>
 
     <p class="text-[#64748B] text-[14px] mt-4">
       ${word.description}
     </p>
 
-    <div class="bg-gray-200 p-4 rounded-md flex justify-around mt-5">
+    <div class="bg-gray-200 p-4 rounded-md flex justify-start gap-32 mt-5 w-full">
       <div>
         <p class="text-[#64748B]">Assignee:</p>
         <p class="font-bold">${word.author}</p>
@@ -196,7 +207,7 @@ const modalDetailsDisplay = (word) => {
 
       <div>
         <p class="text-[#64748B]">Priority:</p>
-        <div class="bg-red-500 px-3 rounded-xl text-white">
+        <div class="bg-red-400 px-3 rounded-xl text-white">
           ${word.priority}
         </div>
       </div>
