@@ -44,7 +44,7 @@ const allIssuesDisplay = (issues, id) => {
         <div onclick="modalBtn('${issue.id}')" class="card bg-base-100 flex flex-col h-full shadow-sm  border-t-4 ${issue.status === "open" ? " border-green-400" : " border-purple-400"} ">
               <div class="p-4">
                 <div class="flex justify-between items-center pb-2">
-                  <img  src= "${issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"}" alt="" />
+                  <img  src= "${issue.status === "open" ? "assets/Open-Status.png" : "assets/Closed-Status.png"}" alt="" />
 
                   <div class="${issue.priority.toUpperCase() === "HIGH" ? "bg-red-200" : issue.priority.toUpperCase() === "MEDIUM" ? "bg-yellow-200" : "bg-gray-200"} rounded-2xl px-6 py-1">
 
