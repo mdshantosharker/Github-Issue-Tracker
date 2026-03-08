@@ -61,10 +61,18 @@
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input id="inputSearch" type="search" required placeholder="Search" />
+            <input
+              id="inputSearch"
+              type="search"
+              required
+              placeholder="Search"
+            />
           </label>
 
-          <button id="searchBtn" class="btn btn-primary font-semibold text-[16px]">
+          <button
+            id="searchBtn"
+            class="btn btn-primary font-semibold text-[16px]"
+          >
             + New Issue
           </button>
         </div>
@@ -104,7 +112,9 @@
         class="md:w-10/12 mx-auto pt-5 shadow-lg p-5 bg-white rounded-sm mt-5 flex justify-between items-center border-b-2 border-gray-200"
       >
         <div class="flex items-center gap-2">
-          <img src="/assets/Aperture.png" alt="" />
+          <div class="md:bg-[#ECE4FF] md:rounded-full w-12 h-12 flex items-center justify-center">
+            <img src="/assets/Aperture.png" alt="" />
+          </div>
           <div>
             <h1 class="text-xl font-semibold">
               <span id="numberIssus">50</span> Issues
@@ -126,27 +136,20 @@
         </div>
       </section>
 
-    
-
       <!-- spinner -->
-       <section id="spinner" class="text-center my-10 hidden">
+      <section id="spinner" class="text-center my-10 hidden">
         <span class="loading loading-spinner loading-xl"></span>
-       </section>
+      </section>
 
       <section
         id="card-container"
-        class="md:w-10/12 mx-auto grid grid-cols-1 shadow-lg p-5 bg-white rounded-sm sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5"
-      >
-     
-      </section>
+        class="md:w-10/12 mx-auto grid grid-cols-1 shadow-lg p-5 bg-white rounded-sm sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-5"
+      ></section>
     </main>
 
-   
     <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
       <section class="modal-box">
-     <div id="details-container">
-      
-     </div>
+        <div id="details-container"></div>
         <div class="modal-action">
           <form method="dialog">
             <!-- if there is a button in form, it will close the modal -->
@@ -156,6 +159,8 @@
       </section>
     </dialog>
 
+    
+               
     <script src="script/home.js"></script>
   </body>
 </html>

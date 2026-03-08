@@ -58,22 +58,38 @@ const allIssuesDisplay = (issues, id) => {
                   ${issue.description}
                 </p>
     
-                <div class="flex flex-wrap   items-center gap-2 pb-2 pt-5">
-                  <div
-                    class="bg-red-200 rounded-2xl px-2 py-1  flex items-center gap-2 text-red-500"
-                  >
-                    <i class="fa-solid fa-bug "></i>
-                    <h1 class="text-[12px]">${issue.labels[0] === undefined ? "No Bug" : issue.labels[0]}BUG</h1>
-                  </div>
-                  <div
-                    class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 text-[#f18408]"
-                  >
-                   <div class="flex items-center ">
-                     <i class="fa-solid fa-life-ring"></i>
-                    <h1 class="text-[12px]">${issue.labels[1] === undefined ? "No Help Need" : issue.labels[1]}</h1>
-                   </div>
-                  </div>
-                </div>
+                <div class="flex flex-wrap items-center gap-2 pb-2 pt-5">
+
+  <div class="${
+    issue.labels[0] === "enhancement"
+      ? "bg-green-400 text-white"
+      : "bg-red-200 text-red-500"
+  } rounded-2xl px-2 py-1 flex items-center gap-2">
+
+    <i class="${
+      issue.labels[0] === "enhancement"
+        ? "fa-solid fa-wand-magic-sparkles"
+        : "fa-solid fa-bug"
+    }"></i>
+
+    <h1 class="text-[12px]">
+      ${issue.labels[0] === undefined ? "No Bug" : issue.labels[0]}
+    </h1>
+
+  </div>
+
+  <div class="bg-[#FDE68A]/60 rounded-2xl px-2 py-1 flex items-center gap-2 text-[#f18408] ${
+    issue.labels[1] === undefined ? "hidden" : ""
+  }">
+
+    <i class="fa-solid fa-life-ring"></i>
+    <h1 class="text-[12px]">
+      ${issue.labels[1] === undefined ? "" : issue.labels[1]}
+    </h1>
+
+  </div>
+
+</div>
                 <hr class="border border-gray-300 mt-3 " />
     
                 <div class="pt-2">
